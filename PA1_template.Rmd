@@ -111,5 +111,5 @@ newMelt <- melt(newData, id=c("interval", "dayType"), measure.vars="steps" )
 newCast <- dcast(newMelt, interval + dayType ~ variable, mean)
         
 require(lattice)
-xyplot(steps ~ interval | dayType, data=newCast, type = "l", layout = c(1,2), xlab = NULL)
+xyplot(steps ~ interval | dayType, data=newCast, type = "l", layout = c(1,2))
 ```

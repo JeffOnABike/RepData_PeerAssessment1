@@ -117,13 +117,6 @@ newData$date <- as.Date(newData$date)
 newData$dayType <- weekdays(newData$date)
 
 require(car)
-```
-
-```
-## Loading required package: car
-```
-
-```r
 newData$dayType <- recode(newData$dayType, "c('Monday', 'Tuesday', 'Wednesday'                
                 , 'Thursday', 'Friday') = 'weekday';
                 c('Saturday', 'Sunday') = 'weekend' ")
@@ -131,24 +124,10 @@ newData$dayType <- factor(newData$dayType)
         
 #melt and cast
 require(reshape2)
-```
-
-```
-## Loading required package: reshape2
-```
-
-```r
 newMelt <- melt(newData, id=c("interval", "dayType"), measure.vars="steps" )
 newCast <- dcast(newMelt, interval + dayType ~ variable, mean)
         
 require(lattice)
-```
-
-```
-## Loading required package: lattice
-```
-
-```r
 xyplot(steps ~ interval | dayType, data=newCast, type = "l", layout = c(1,2), xlab = NULL)
 ```
 
